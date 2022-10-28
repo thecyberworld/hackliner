@@ -1,1 +1,1 @@
-# cybersec-oneliners
+# cybersec-oneliner
