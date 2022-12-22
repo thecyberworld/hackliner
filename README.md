@@ -1,4 +1,5 @@
-CyberSec Oneliner
+# Hackliner: Cybersecurity/Bughubting Oneliners
+
 > A collection of cyber security one-liner scripts.
 --- 
 
