@@ -499,7 +499,7 @@ nmap -v0 HOST -oX /dev/stdout | jc --xml -p | jq -r '.nmaprun.host | (.address["
 ```
 
 ### Filtering URLs and Exploiting SQL Injection
->@tholkappiar
+> @tholkappiar
 ```bash
 cat url.txt | gau | egrep -v '(.js|.png|.svg|.gif|.jpg|.txt)'|tee sqli.txt && sqlmap -m sqli.txt -dbs --batch
 ```
