@@ -493,6 +493,8 @@ curl -vs URL --stderr - | awk '/^content-security-policy:/' | grep -Eo "[a-zA-Z0
 nmap -v0 HOST -oX /dev/stdout | jc --xml -p | jq -r '.nmaprun.host | (.address["@addr"] + ":" + .ports.port[]["@portid"])' | httpx --silent
 ```
 
+=======
+
 ### Filtering URLs and Exploiting SQL Injection
 > @tholkappiar
 ```bash
@@ -504,3 +506,10 @@ cat url.txt | gau | egrep -v '(.js|.png|.svg|.gif|.jpg|.txt)'|tee sqli.txt && sq
 ```bash
 cat url.txt | gau -subs | grep '=' | egrep -v '(\.js|\.png|\.svg|\.gif|\.jpg|\.jpeg|\.txt|\.css|\.ico)' | qsreplace "ssti{{7*7}}" | while read url; do cur=$(curl -s $url | grep "ssti49"); echo -e "$url -> $cur"; done
 ```
+
+### Find and Replace in Multiple Files using find, xargs, and sed:
+> @theAnvil01
+``` bash
+find /path/to/files -type f -name "*.txt" -print0 | xargs -0 sed -i 's/old_string/new_string/g'
+```
+
